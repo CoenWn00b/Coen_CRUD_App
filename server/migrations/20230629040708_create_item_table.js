@@ -5,7 +5,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable("items", (table) => {
         table.increments("id");
-        table.integer("UserId");
+        table.integer("User_id");
         table.foreign("User_id").references("users.id");
         table.string("item_name", 50);
         table.string("description", 50);
