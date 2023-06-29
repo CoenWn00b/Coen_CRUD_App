@@ -5,11 +5,11 @@
 exports.up = function(knex) {
     return knex.schema.createTable("items", (table) => {
         table.increments("id");
-        table.number("UserId");
+        table.integer("UserId");
         table.foreign("User_id").references("users.id");
         table.string("item_name", 50);
         table.string("description", 50);
-        table.number("quantity");
+        table.integer("quantity");
     })
 };
 
