@@ -36,9 +36,9 @@ function authenticateToken(request, response, next) {
 // ENDPOINTS
 app.get('/', (req, res) => res.status(200).send());
 
-
 // Create account
 app.post('/register', async (req, res) => {
+    console.log(req.body);
     if(!req.body.firstName || !req.body.lastName || !req.body.username || !req.body.password){
         res.status(400).send("Required fields are missing");
     }else if(await queries.userExists(req.body.username)){
