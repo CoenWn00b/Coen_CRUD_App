@@ -151,13 +151,7 @@ const getItem = async (id) => {
             console.error(err);
             return false;
         })
-    let user = await knex('users')
-        .where('id', '=', item[0].user_id)
-        .catch(err => {
-            console.error(err);
-        })
-    item[0].firstName = user[0].first_name;
-    item[0].lastName = user[0].last_name;
+
     if(item.length > 0){
         return item[0];
     }else{
