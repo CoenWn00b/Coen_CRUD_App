@@ -118,10 +118,10 @@ app.post('/item', authenticateToken, async (req, res) => {
     }else{
         let userID = JSON.parse(atob(req.headers["authorization"].split(".")[1]).replaceAll("[", "").replaceAll("]", "")).id;
         let id = await queries.addItem({
-            user_id: userID,
+            user_id: parseInt(userID),
             item_name: req.body.item_name,
             description: req.body.description,
-            quantity: req.body.quantity
+            quantity: parseInt(req.body.quantity)
         })
         if(id){
             let items = await queries.getUserItems(userID)
