@@ -1,4 +1,4 @@
-const queries = require("../src/database_handler");
+const queries = require("./database_handler");
 const crypto = require('crypto');
 const jwt = require("jsonwebtoken");
 const express = require('express');
