@@ -112,7 +112,8 @@ app.get('/items/:userID', authenticateToken, async (req, res) => {
 
 //creating an item inventory manager
 app.post('/item', authenticateToken, async (req, res) => {
-    if(!req.body.title || !req.body.content){
+    console.log(req.body);
+    if(!req.body.item_name || !req.body.description || !req.body.quantity){
         res.status(400).send("Required fields are missing");
     }else{
         let userID = JSON.parse(atob(req.headers["authorization"].split(".")[1]).replaceAll("[", "").replaceAll("]", "")).id;
