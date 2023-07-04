@@ -4,7 +4,7 @@ const config = {
     },
   
     production: {
-      apiUrl: "http://localhost:3000/" /*"https://coen-crud-api.herokuapp.com/",*/
+      apiUrl: "https://coen-crud-api.herokuapp.com/",
     },
     test: {
       apiUrl: "",
