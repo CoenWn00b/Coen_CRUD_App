@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import config from "../../config";
+import { ItemContext } from '../../context/ItemContext';
 
 const apiUrl = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -18,10 +19,12 @@ const apiUrl = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 function AddItemDetails(props) {
     const [user, setUser] = useContext(UserContext);
     const [addItem, setAddItem] = props.state;
+    const [selectedItem, setSelectedItem] = useContext(ItemContext);
 
     console.log(user);
 
     function saveItem(){
+
         let token =  document.cookie.split(";").find((element) => element.includes("crud_app_user")).split('=')[1]
         console.log(token);   
         let itemName;
@@ -55,6 +58,7 @@ function AddItemDetails(props) {
                             }
                         })
                         .then(data => {
+                            setSelectedItem({});
                             setAddItem(false);
                         })
                         .catch(err => console.error(err.status));

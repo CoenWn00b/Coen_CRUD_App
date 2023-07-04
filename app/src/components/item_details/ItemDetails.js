@@ -11,18 +11,22 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import config from "../../config";
+import { ItemContext } from '../../context/ItemContext';
 
 const apiUrl = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 
 function ItemDetails(props) {
     const [user, setUser] = useContext(UserContext);
+    const [selectedItem, setSelectedItem] = useContext(ItemContext);
+
     console.log(user);
     const[editState, setEditState] = useState(false);
     const[addState, setAddState] = useState(false);
 console.log(props.items.item_name);
 
     function editToggle(){
+
         if(editState){
             let itemName;
             let description;
@@ -61,6 +65,7 @@ console.log(props.items.item_name);
                             }
                         })
                         .then(data => {
+                            setSelectedItem({});
                             setEditState(!editState);
                         })
                         .catch(err => console.error(err.status));

@@ -66,7 +66,7 @@ function InventoryManager() {
                 }
             })
             .catch(err => console.error(err.status));
-    }, []);
+    }, [selectedItem]);
 
 
     return (

@@ -11,11 +11,14 @@ import Typography from '@mui/material/Typography';
 import { UserContext } from "../../context/UserContext";
 import { useContext, useState } from "react";
 import config from "../../config";
+import { ItemContext } from '../../context/ItemContext';
 
 const apiUrl = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 //adapted from MUI Stack template
 function ItemBrowser(props) {
+    const [selectedItem, setSelectedItem] = useContext(ItemContext);
+
     const [user, setUser] = useContext(UserContext);
     const[addState, setAddState] = useState(false);
 
