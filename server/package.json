@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "if [$NODE_ENV == 'production']; then node src/index.js; else nodemon src/index.js; fi",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js;"
   },
   "author": "",
   "license": "ISC",

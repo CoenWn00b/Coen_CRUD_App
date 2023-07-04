@@ -49,9 +49,9 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - type: bind
-        source: ./app
-        target: /app
-      # - "./front-end:/app"
+      #- type: bind
+      #  source: ./app
+      #  target: /app
+      - "./app:/app"
     depends_on:
       - "server"

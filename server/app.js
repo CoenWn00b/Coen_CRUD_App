@@ -22,9 +22,10 @@ function authenticateToken(request, response, next) {
     }
     const authHeader = request.headers["authorization"];
     const token = authHeader.split(" ")[1];
+    console.log(token);
     if (token == null) return response.sendStatus(401);
   
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    jwt.verify(token, "79D125AAE12D29F728EABA4C9C9FB8054966AED1EBBE4A50115DE78D32507BC3", (err, user) => {
       if (err) return response.sendStatus(401);
       request.user = user;
       response.status(201);
@@ -65,7 +66,7 @@ app.post('/login', async (req, res) => {
         let hash = crypto.createHash('sha256').update(req.body.password + req.body.username).digest('base64');
         if(storedPassword === hash){
             let user = await queries.getUserInfo(req.body.username);
-            let token = jwt.sign(JSON.stringify(user), process.env.ACCESS_TOKEN_SECRET);
+            let token = jwt.sign(JSON.stringify(user), "79D125AAE12D29F728EABA4C9C9FB8054966AED1EBBE4A50115DE78D32507BC3");
             res.status(200).send({token: token});
         }else{
             res.status(400).send("Incorrect username or password");
