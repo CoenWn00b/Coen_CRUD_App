@@ -12,8 +12,8 @@ var corsOptions = {
     "credentials": true,
 };
 app.use(express.json());
-app.use(cors(corsOptions)); 
-app.options('*', cors())
+//app.use(cors(corsOptions)); 
+//app.options('*', cors())
 
 // MIDDLEWARE
 function authenticateToken(request, response, next) {
